@@ -1,0 +1,107 @@
+
+(rules PCB picoface_16v8
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 2242)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.1)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.9)
+    )
+  )
+  (rule
+    (width 200.0)
+    (clearance 200.0)
+    (clearance 100.0 (type smd_to_turn_gap))
+    (clearance 50.0 (type smd))
+    (clearance 200.0 (type "kicad_default"))
+    (clearance 200.0 (type PWR))
+  )
+  (padstack "Via[0-1]_600:300_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_600:300_um" "Via[0-1]_600:300_um" default
+  )
+  (via 
+    "Via[0-1]_600:300_um-kicad_default" "Via[0-1]_600:300_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_600:300_um-PWR" "Via[0-1]_600:300_um" PWR
+  )
+  (via_rule
+    default "Via[0-1]_600:300_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_600:300_um-kicad_default"
+  )
+  (via_rule
+    PWR "Via[0-1]_600:300_um-PWR"
+  )
+  (class default
+    "@:no_net_0" "@:no_net_1"
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    /A2xA10 /MLE /A1xA9 /A2 /A4xA12 /A3xA11 /A9 /~{CSROM}
+    /A3 /A7 /A10 /A0 /A4 /ROME /A11 /A1
+    /A8 /A0xA8 /~{JOYE} /A5 /A13 /A5xA13 /A12 /~{PICOREQ}
+    /A7xRD /~{RD} /~{WR} /~{IOREQ} /A14 /~{MREQ} /A6 /A6xM1
+    /~{RESET} /A15 /D5 "unconnected-(J1-BUSRQ-PadA19)" "unconnected-(J1-RFSH-PadB25)" /D4 /D3 /D7
+    "unconnected-(J1-VIDEO-PadA15)" "unconnected-(J1-CLOCK-PadA8)" "unconnected-(J1-WAIT-PadB21)" "unconnected-(J1-HALT-PadB15)" /~{NMI} "unconnected-(J1--5Vcc-PadB20)" "unconnected-(J1-12Vac-PadB23)" /M1
+    /D2 /D1 /RUN /D0 "unconnected-(J1-IORQGE-PadA13)" "unconnected-(J1-U-PadA18)" "unconnected-(J1-+12Vcc-PadB22)" "unconnected-(J1-BUSACK-PadA26)"
+    "unconnected-(J1-GND-PadA14)" "unconnected-(J1-~{INT}-PadB13)" "unconnected-(J1-V-PadA17)" "unconnected-(J1-+9Vcc-PadA4)" "unconnected-(J1-Y-PadA16)" "unconnected-(J1-N{slash}C-PadB4)" /D6 "unconnected-(J1-N{slash}C-PadB28)"
+    "unconnected-(U2-GND-Pad13)" "unconnected-(U2-ADC_VREF-Pad35)" "unconnected-(U2-GPIO28_ADC2-Pad34)" /MOSI "unconnected-(U2-GND-Pad28)" "unconnected-(U2-AGND-Pad33)" "unconnected-(U2-GND-Pad8)" /CLK
+    "unconnected-(U2-3V3_EN-Pad37)" "unconnected-(U2-GND-Pad23)" "unconnected-(U2-GND-Pad18)" "/USER_SW" /3V3 /MISO /CS "Net-(JP1-C)"
+    "/J_FIRE2" "/J_FIRE1" "/J_DOWN" "/J_FIRE3" "/J_RIGHT" "/J_LEFT" "/J_UP" /VBUS
+    "Net-(U3-I3b)"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class PWR
+    /VCC /GND /VSYS
+    (clearance_class PWR)
+    (via_rule PWR)
+    (rule
+      (width 600.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
